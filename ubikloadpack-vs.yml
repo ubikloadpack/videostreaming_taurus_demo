@@ -1,12 +1,13 @@
 settings:
   env:
      jmeterVersion: r1840174
-     JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
+#    Set Java Home for Mac OSX
+#     JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
 execution:
 - scenario: existing
-  concurrency: 500
+  concurrency: 250
   hold-for: 10m
-  ramp-up: 30s
+  ramp-up: 60s
 
 scenarios:
   existing:
@@ -14,11 +15,16 @@ scenarios:
 
 modules:
   jmeter:
+    memory-xmx: 8g
     path: ~/.bzt/jmeter-taurus/${jmeterVersion}/bin/jmeter
     version: ${jmeterVersion}
     download-link: https://ci.apache.org/projects/jmeter/nightlies/${jmeterVersion}/apache-jmeter-${jmeterVersion}.zip
     detect-plugins: false
     properties:
+      # Change this for your real URL
+      MANIFEST_URL: http://localhost:8080/hls/live/test.m3u8
+      # Duration of video watched in seconds
+      DURATION_WATCHED: 20
       ULP.videostreaming.licensepath: ubik-streaming-plugin.license
       sample_variables: ulp_buffer_fill,ulp_lag_time,ulp_play_time,ulp_lag_ratio,ulp_dwn_time,ulp_hits,ulp_avg_chunk_time,ulp_avg_manifest_time
       saveservice_properties: saveservice.properties
@@ -96,5 +102,4 @@ services:
 
 reporting:
 - module: final-stats
-- module: console
 - module: blazemeter

@@ -1,6 +1,13 @@
 # license file
 ubik-streaming-plugin.license
+
+#MAC Specific files
 .DS_Store
+
+#Output folders
+2018-09-06_15-55-48.716926
+
+
 # Compiled class file
 *.class
 
