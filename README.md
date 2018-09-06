@@ -15,10 +15,11 @@ It uses [Taurus](https://gettaurus.org) and [UbikLoadPack](https://ubikloadpack.
 To run the code:
 
 - Install [Taurus](https://gettaurus.org/install/Installation/)
+- Install a [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - Request a [trial](https://ubikloadpack.com/tryout.php) version of UbikLoadPack Video Streaming Plugin
-- clone this repository
-- put the license file sent by Ubik-Ingenierie in this folder
-- put the plugin jar contained in bundle sent in the trial mail in this folder
+- Clone this repository: `git clone https://github.com/ubikloadpack/videostreaming_taurus_demo.git`
+- put the license file `ubik-streaming-plugin.license` sent by Ubik-Ingenierie in this folder
+- put the plugin jar `ubik-jmeter-videostreaming-plugin-X.X.X.jar` contained in bundle sent in the trial mail in this folder
 - Run  `bzt ubikloadpack-vs.yml`
 
 
