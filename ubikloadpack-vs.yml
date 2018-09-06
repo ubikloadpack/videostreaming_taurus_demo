@@ -5,9 +5,9 @@ settings:
 #     JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
 execution:
 - scenario: existing
-  concurrency: 250
-  hold-for: 10m
-  ramp-up: 60s
+  concurrency: 3
+  hold-for: 5m
+  ramp-up: 30s
 
 scenarios:
   existing:
@@ -24,7 +24,7 @@ modules:
       # Change this for your real URL
       MANIFEST_URL: http://localhost:8080/hls/live/test.m3u8
       # Duration of video watched in seconds
-      DURATION_WATCHED: 20
+      DURATION_WATCHED: 10
       ULP.videostreaming.licensepath: ubik-streaming-plugin.license
       sample_variables: ulp_buffer_fill,ulp_lag_time,ulp_play_time,ulp_lag_ratio,ulp_dwn_time,ulp_hits,ulp_avg_chunk_time,ulp_avg_manifest_time
       saveservice_properties: saveservice.properties
@@ -47,7 +47,7 @@ modules:
       jmeter.reportgenerator.graph.custom_ulp_lag_time.property.setSampleVariableName: ulp_lag_time
       jmeter.reportgenerator.graph.custom_ulp_lag_time.property.setContentMessage: Lag time
       jmeter.reportgenerator.graph.custom_ulp_lag_ratio.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomGraphConsumer
-      jmeter.reportgenerator.graph.custom_ulp_lag_ratio.title: Lag ratio in Millis
+      jmeter.reportgenerator.graph.custom_ulp_lag_ratio.title: Lag ratio in percentage
       jmeter.reportgenerator.graph.custom_ulp_lag_ratio.property.set_Y_Axis: Percentage
       jmeter.reportgenerator.graph.custom_ulp_lag_ratio.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
       jmeter.reportgenerator.graph.custom_ulp_lag_ratio.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
