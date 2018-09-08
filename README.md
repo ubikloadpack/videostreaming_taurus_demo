@@ -21,7 +21,5 @@ To run the code:
 - Put the license file `ubik-streaming-plugin.license` sent by Ubik-Ingenierie in this folder
 - Put the plugin jar `ubik-jmeter-videostreaming-plugin-X.X.X.jar` (contained in the bundle in lib/ext folder) in this folder
 - Run  `bzt ubikloadpack-vs.yml`
-- Enjoy the report with custom metrics generated in the output folder
+- Enjoy the [JMeter HTML report](https://jmeter.apache.org/usermanual/generating-dashboard.html) with custom metrics generated in the output folder
 - [Report example](https://a.blazemeter.com/app/?public-token=QxDol44Xh7eqSm7LPXf38M7Gj2qZ96VFcOHcnlPVOJ409V6V5U#reports/r-ext-5b9131e708f56/summary) for a run with 250 VUs
-
-
