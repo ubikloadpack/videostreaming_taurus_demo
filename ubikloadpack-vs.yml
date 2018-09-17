@@ -1,6 +1,6 @@
 settings:
   env:
-     jmeterVersion: r1840174
+     jmeterVersion: r1840983
 #    Set Java Home for Mac OSX
 #     JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
 execution:
