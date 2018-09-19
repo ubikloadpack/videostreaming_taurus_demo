@@ -1,6 +1,6 @@
 settings:
   env:
-     jmeterVersion: r1840983
+     jmeterVersion: 5.0
 #    Set Java Home for Mac OSX
 #     JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
 execution:
@@ -18,7 +18,7 @@ modules:
     memory-xmx: 8g
     path: ~/.bzt/jmeter-taurus/${jmeterVersion}/bin/jmeter
     version: ${jmeterVersion}
-    download-link: https://ci.apache.org/projects/jmeter/nightlies/${jmeterVersion}/apache-jmeter-${jmeterVersion}.zip
+    download-link: https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-{version}.zip
     detect-plugins: false
     properties:
       # Change this for your real URL
