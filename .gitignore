@@ -34,3 +34,7 @@ hs_err_pid*
 
 #Eclipse
 .project
+bzm
+bzm-with-propsonly
+bzm-with-report
+bzm-working

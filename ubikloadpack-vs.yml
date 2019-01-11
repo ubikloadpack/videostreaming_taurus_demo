@@ -1,8 +1,6 @@
 settings:
   env:
-     jmeterVersion: 5.0
-#    Set Java Home for Mac OSX
-#     JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
+     JMETER_VERSION: "5.0"
 execution:
 - scenario: existing
   concurrency: 3
@@ -16,9 +14,6 @@ scenarios:
 modules:
   jmeter:
     memory-xmx: 8g
-    path: ~/.bzt/jmeter-taurus/${jmeterVersion}/bin/jmeter
-    version: ${jmeterVersion}
-    download-link: https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-{version}.zip
     detect-plugins: false
     properties:
       # Change this for your real URL
@@ -27,11 +22,12 @@ modules:
       DURATION_WATCHED: 10
       ULP.videostreaming.licensepath: ubik-streaming-plugin.license
       sample_variables: ulp_buffer_fill,ulp_lag_time,ulp_play_time,ulp_lag_ratio,ulp_dwn_time,ulp_hits,ulp_avg_chunk_time,ulp_avg_manifest_time
-      saveservice_properties: saveservice.properties
+      # NOT NEEDED
+      #saveservice_properties: saveservice.properties
       jmeter.reportgenerator.report_title: UbikLoadPack Video Streaming Demo
       jmeter.reportgenerator.exporter.html.series_filter: ^(ULP_PLAYER)(-success|-failure)?$
       jmeter.reportgenerator.overall_granularity: 1000
-      output: ${TAURUS_ARTIFACTS_DIR}/output/
+      output: ${TAURUS_ARTIFACTS_DIR}/
       jmeter.reportgenerator.graph.custom_ulp_buffer_fill.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomGraphConsumer
       jmeter.reportgenerator.graph.custom_ulp_buffer_fill.title: Buffer fill in Millis
       jmeter.reportgenerator.graph.custom_ulp_buffer_fill.property.set_Y_Axis: Response Time (ms)
@@ -97,7 +93,7 @@ modules:
 services:
 - module: shellexec
   post-process:
-  - ~/.bzt/jmeter-taurus/${jmeterVersion}/bin/jmeter -p ~/.bzt/jmeter-taurus/${jmeterVersion}/bin/jmeter.properties -q ${TAURUS_ARTIFACTS_DIR}/jmeter-bzt.properties -g ${TAURUS_ARTIFACTS_DIR}/output/output.csv -j ${TAURUS_ARTIFACTS_DIR}/jmeter-report.log -o ${TAURUS_ARTIFACTS_DIR}/report
+  - ~/.bzt/jmeter-taurus/${JMETER_VERSION}/bin/jmeter -p ~/.bzt/jmeter-taurus/${JMETER_VERSION}/bin/jmeter.properties -q ${TAURUS_ARTIFACTS_DIR}/jmeter-bzt.properties -g ${TAURUS_ARTIFACTS_DIR}/output.csv -j ${TAURUS_ARTIFACTS_DIR}/jmeter-report.log -o ${TAURUS_ARTIFACTS_DIR}/report
 
 
 reporting:
