@@ -1,0 +1,86 @@
+settings:
+  env:
+     # A Version higher or equal to 5.0 is required
+     JMETER_VERSION: "5.0"
+
+execution:
+- scenario: UbikLoadPack-Demo
+  concurrency: 3
+  hold-for: 5m
+  ramp-up: 30s
+  locations:
+    us-east-1: 1
+
+scenarios:
+  UbikLoadPack-Demo:
+    script: ulp_video_streaming_demo.jmx
+
+modules:
+  jmeter:
+    detect-plugins: false
+    properties:
+      # Change this for the URL of your manifest
+      #MANIFEST_URL: 
+      # Duration of video watched in seconds
+      DURATION_WATCHED: 10
+      jmeter.reportgenerator.report_title: UbikLoadPack Video Streaming Demo
+      jmeter.reportgenerator.exporter.html.series_filter: ^(ULP_PLAYER)(-success|-failure)?$
+      jmeter.reportgenerator.overall_granularity: 1000
+      ULP.videostreaming.licensepath: ubik-streaming-plugin.license
+      sample_variables: ulp_buffer_fill,ulp_lag_time,ulp_play_time,ulp_lag_ratio,ulp_dwn_time,ulp_hits,ulp_avg_chunk_time,ulp_avg_manifest_time
+      output: ${TAURUS_ARTIFACTS_DIR}/
+      jmeter.reportgenerator.graph.custom_ulp_buffer_fill.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomGraphConsumer
+      jmeter.reportgenerator.graph.custom_ulp_buffer_fill.title: Buffer fill in Millis
+      jmeter.reportgenerator.graph.custom_ulp_buffer_fill.property.set_Y_Axis: Response Time (ms)
+      jmeter.reportgenerator.graph.custom_ulp_buffer_fill.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
+      jmeter.reportgenerator.graph.custom_ulp_buffer_fill.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
+      jmeter.reportgenerator.graph.custom_ulp_buffer_fill.property.setSampleVariableName: ulp_buffer_fill
+      jmeter.reportgenerator.graph.custom_ulp_buffer_fill.property.setContentMessage: Time to buffer
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomGraphConsumer
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.title: Lag time in Millis
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_Y_Axis: Response Time (ms)
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.setSampleVariableName: ulp_lag_time
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.setContentMessage: Lag time
+      jmeter.reportgenerator.graph.custom_ulp_lag_ratio.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomGraphConsumer
+      jmeter.reportgenerator.graph.custom_ulp_lag_ratio.title: Lag ratio in percentage
+      jmeter.reportgenerator.graph.custom_ulp_lag_ratio.property.set_Y_Axis: Percentage
+      jmeter.reportgenerator.graph.custom_ulp_lag_ratio.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
+      jmeter.reportgenerator.graph.custom_ulp_lag_ratio.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
+      jmeter.reportgenerator.graph.custom_ulp_lag_ratio.property.setSampleVariableName: ulp_lag_ratio
+      jmeter.reportgenerator.graph.custom_ulp_lag_ratio.property.setContentMessage: Lag Ratio (%)
+      jmeter.reportgenerator.graph.custom_ulp_hits.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomGraphConsumer
+      jmeter.reportgenerator.graph.custom_ulp_hits.title: Number of Hits
+      jmeter.reportgenerator.graph.custom_ulp_hits.property.set_Y_Axis: Number
+      jmeter.reportgenerator.graph.custom_ulp_hits.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
+      jmeter.reportgenerator.graph.custom_ulp_hits.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
+      jmeter.reportgenerator.graph.custom_ulp_hits.property.setSampleVariableName: ulp_hits
+      jmeter.reportgenerator.graph.custom_ulp_hits.property.setContentMessage: Hits
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomGraphConsumer
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.title: Lag time in Millis
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_Y_Axis: Response Time (ms)
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.setSampleVariableName: ulp_lag_time
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.setContentMessage: Lag time
+      jmeter.reportgenerator.graph.custom_ulp_avg_chunk_time.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomChunkGraphConsumer
+      jmeter.reportgenerator.graph.custom_ulp_avg_chunk_time.title: Average Chunk Response Time in Millis
+      jmeter.reportgenerator.graph.custom_ulp_avg_chunk_time.property.set_Y_Axis: Response Time (ms)
+      jmeter.reportgenerator.graph.custom_ulp_avg_chunk_time.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
+      jmeter.reportgenerator.graph.custom_ulp_avg_chunk_time.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
+      jmeter.reportgenerator.graph.custom_ulp_avg_chunk_time.property.setSampleVariableName: elapsed
+      jmeter.reportgenerator.graph.custom_ulp_avg_chunk_time.property.setContentMessage: Average Chunk time
+      jmeter.reportgenerator.graph.custom_ulp_avg_manifest_time.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomManifestGraphConsumer
+      jmeter.reportgenerator.graph.custom_ulp_avg_manifest_time.title: Average Manifest Response Time in Millis
+      jmeter.reportgenerator.graph.custom_ulp_avg_manifest_time.property.set_Y_Axis: Response Time (ms)
+      jmeter.reportgenerator.graph.custom_ulp_avg_manifest_time.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
+      jmeter.reportgenerator.graph.custom_ulp_avg_manifest_time.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
+      jmeter.reportgenerator.graph.custom_ulp_avg_manifest_time.property.setSampleVariableName: elapsed
+      jmeter.reportgenerator.graph.custom_ulp_avg_manifest_time.property.setContentMessage: Average Manifest time
+
+services:
+- module: shellexec
+  post-process:
+  - ~/.bzt/jmeter-taurus/${JMETER_VERSION}/bin/jmeter -p ~/.bzt/jmeter-taurus/${JMETER_VERSION}/bin/jmeter.properties -q ${TAURUS_ARTIFACTS_DIR}/jmeter-bzt.properties -g ${TAURUS_ARTIFACTS_DIR}/output.csv -j ${TAURUS_ARTIFACTS_DIR}/jmeter-report.log -o ${TAURUS_ARTIFACTS_DIR}/report
+
