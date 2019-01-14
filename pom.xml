@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ubikingenierie.ubikloadpack</groupId>
+    <artifactId>demo-ulp-maven</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <testResultsTimestamp>false</testResultsTimestamp>
+                    <propertiesJMeter>
+                        <BUILD_TAG>${env.BUILD_TAG}</BUILD_TAG>
+                        <ULP.videostreaming.licensepath>${basedir}/src/test/jmeter/ubik-streaming-plugin.license</ULP.videostreaming.licensepath>
+                        <log_level.jmeter.report>DEBUG</log_level.jmeter.report>
+                    </propertiesJMeter>
+                    <jmeterExtensions>
+                        <artifact>com.ubikingenierie.ubikloadpack.streaming:ubik-jmeter-streaming-plugin:6.3.2</artifact>
+                    </jmeterExtensions>
+                    <downloadExtensionDependencies>false</downloadExtensionDependencies>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>check-results</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>results</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

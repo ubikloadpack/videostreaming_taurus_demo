@@ -89,7 +89,7 @@ modules:
     report-name: UbikLoadPack Demo  # if you will use value 'ask', it will ask it from command line
     test: UbikLoadPack Demo with Taurus
     project: ULP Tests
-
+    token: 7c35d3e119bf2834f5af206d:ac817aefb0fc9ab9b6cb2a9ff890ba66e54a888b0c5348b38
 services:
 - module: shellexec
   post-process:

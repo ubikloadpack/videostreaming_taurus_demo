@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="WARN" packages="org.apache.jmeter.gui.logging">
+  <Appenders>
+    <File name="jmeter-log" fileName="${sys:jmeter.logfile:-jmeter.log}" append="false">
+      <PatternLayout>
+        <pattern>%d %p %c{1.}: %m%n</pattern>
+      </PatternLayout>
+    </File>
+  </Appenders>
+  <Loggers>
+
+    <Root level="info">
+      <AppenderRef ref="jmeter-log" />
+    </Root>
+
+    <!--
+    <Logger name="org.apache.jmeter.control" level="debug" />
+    <Logger name="org.apache.jmeter.testbeans" level="debug" />
+    <Logger name="org.apache.jmeter.engine" level="debug" />
+    <Logger name="org.apache.jmeter.threads" level="debug" />
+    <Logger name="org.apache.jmeter.gui" level="warn" />
+    <Logger name="org.apache.jmeter.testelement" level="debug" />
+    <Logger name="org.apache.jmeter.util" level="warn" />
+    <Logger name="org.apache.jmeter.protocol.http" level="debug" />
+    -->
+    <!-- # For CookieManager, AuthManager etc: -->
+    <!--
+    <Logger name="org.apache.jmeter.protocol.http.control" level="debug" />
+    <Logger name="org.apache.jmeter.protocol.ftp" level="warn" />
+    <Logger name="org.apache.jmeter.protocol.jdbc" level="debug" />
+    <Logger name="org.apache.jmeter.protocol.java" level="warn" />
+    <Logger name="org.apache.jmeter.testelements.property" level="debug" />
+    -->
+
+    <!--
+      # Apache HttpClient logging examples
+    -->
+    <!-- # Enable header wire + context logging - Best for Debugging -->
+    <!--
+    <Logger name="org.apache.http" level="debug" />
+    <Logger name="org.apache.http.wire" level="error" />
+    -->
+
+    <!-- # Enable full wire + context logging -->
+    <!-- <Logger name="org.apache.http" level="debug" /> -->
+
+    <!-- # Enable context logging for connection management -->
+    <!-- <Logger name="org.apache.http.impl.conn" level="debug" /> -->
+
+    <!-- # Enable context logging for connection management / request execution -->
+    <!--
+    <Logger name="org.apache.http.impl.conn" level="debug" />
+    <Logger name="org.apache.http.impl.client" level="debug" />
+    <Logger name="org.apache.http.client" level="debug" />
+    -->
+
+    <!--
+      # Reporting logging configuration examples
+    -->
+    <!-- # If you want to debug reporting, uncomment this line -->
+    <!-- <Logger name="org.apache.jmeter.report" level="debug" /> -->
+
+    <!--
+      # More user specific logging configuration examples.
+    -->
+    <!-- <Logger name="org.apache.jorphan.reflect" level="debug" /> -->
+    <!--
+      # Warning: Enabling the next debug line causes javax.net.ssl.SSLException: Received fatal alert: unexpected_message
+                 for certain sites when used with the default HTTP Sampler
+    -->
+    <!--
+    <Logger name="org.apache.jmeter.util.HttpSSLProtocolSocketFactory" level="debug" />
+    <Logger name="org.apache.jmeter.util.JsseSSLManager" level="debug" />
+    -->
+
+    <!--
+      # Enable Proxy request debug
+    -->
+    <!-- <Logger name="org.apache.jmeter.protocol.http.proxy.HttpRequestHdr" level="debug" /> -->
+
+  </Loggers>
+
+</Configuration>

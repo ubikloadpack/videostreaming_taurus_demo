@@ -6,7 +6,7 @@ ubik-streaming-plugin.license
 
 #Output folders
 2018-09-06_15-55-48.716926
-
+2019-01-11_17-05-41.561202
 
 # Compiled class file
 *.class
@@ -38,3 +38,5 @@ bzm
 bzm-with-propsonly
 bzm-with-report
 bzm-working
+
+target
