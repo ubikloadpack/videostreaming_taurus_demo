@@ -37,7 +37,7 @@ modules:
       jmeter.reportgenerator.graph.custom_ulp_buffer_fill.property.setContentMessage: Time to buffer
       jmeter.reportgenerator.graph.custom_ulp_lag_time.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomGraphConsumer
       jmeter.reportgenerator.graph.custom_ulp_lag_time.title: Lag time in Millis
-      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_Y_Axis: Response Time (ms)
+      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_Y_Axis: Lag Time (ms)
       jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
       jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
       jmeter.reportgenerator.graph.custom_ulp_lag_time.property.setSampleVariableName: ulp_lag_time
@@ -56,13 +56,6 @@ modules:
       jmeter.reportgenerator.graph.custom_ulp_hits.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
       jmeter.reportgenerator.graph.custom_ulp_hits.property.setSampleVariableName: ulp_hits
       jmeter.reportgenerator.graph.custom_ulp_hits.property.setContentMessage: Hits
-      jmeter.reportgenerator.graph.custom_ulp_lag_time.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomGraphConsumer
-      jmeter.reportgenerator.graph.custom_ulp_lag_time.title: Lag time in Millis
-      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_Y_Axis: Response Time (ms)
-      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
-      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
-      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.setSampleVariableName: ulp_lag_time
-      jmeter.reportgenerator.graph.custom_ulp_lag_time.property.setContentMessage: Lag time
       jmeter.reportgenerator.graph.custom_ulp_avg_chunk_time.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomChunkGraphConsumer
       jmeter.reportgenerator.graph.custom_ulp_avg_chunk_time.title: Average Chunk Response Time in Millis
       jmeter.reportgenerator.graph.custom_ulp_avg_chunk_time.property.set_Y_Axis: Response Time (ms)
