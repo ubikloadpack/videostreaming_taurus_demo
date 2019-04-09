@@ -1,6 +1,6 @@
 settings:
   env:
-     JMETER_VERSION: "5.0"
+     JMETER_VERSION: "5.1.1"
 execution:
 - scenario: existing
   concurrency: 3
@@ -13,6 +13,7 @@ scenarios:
 
 modules:
   jmeter:
+    version: ${JMETER_VERSION}
     memory-xmx: 8g
     detect-plugins: false
     properties:
@@ -51,7 +52,7 @@ modules:
       jmeter.reportgenerator.graph.custom_ulp_lag_ratio.property.setContentMessage: Lag Ratio (%)
       jmeter.reportgenerator.graph.custom_ulp_hits.classname: com.ubikingenierie.jmeter.plugin.videostreaming.graphing.ULPCustomGraphConsumer
       jmeter.reportgenerator.graph.custom_ulp_hits.title: Number of Hits
-      jmeter.reportgenerator.graph.custom_ulp_hits.property.set_Y_Axis: Number
+      jmeter.reportgenerator.graph.custom_ulp_hits.property.set_Y_Axis: Hits
       jmeter.reportgenerator.graph.custom_ulp_hits.property.set_X_Axis: "Elapsed Time (granularity: 1s)"
       jmeter.reportgenerator.graph.custom_ulp_hits.property.set_granularity: ${jmeter.reportgenerator.overall_granularity}
       jmeter.reportgenerator.graph.custom_ulp_hits.property.setSampleVariableName: ulp_hits
@@ -85,6 +86,7 @@ modules:
     token: 7c35d3e119bf2834f5af206d:ac817aefb0fc9ab9b6cb2a9ff890ba66e54a888b0c5348b38
 services:
 - module: shellexec
+  run-at: local
   post-process:
   - ~/.bzt/jmeter-taurus/${JMETER_VERSION}/bin/jmeter -p ~/.bzt/jmeter-taurus/${JMETER_VERSION}/bin/jmeter.properties -q ${TAURUS_ARTIFACTS_DIR}/jmeter-bzt.properties -g ${TAURUS_ARTIFACTS_DIR}/output.csv -j ${TAURUS_ARTIFACTS_DIR}/jmeter-report.log -o ${TAURUS_ARTIFACTS_DIR}/report
 
