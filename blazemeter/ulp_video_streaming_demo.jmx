@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="4.0" jmeter="5.1-SNAPSHOT.20190108">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.2.1">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -23,16 +23,24 @@
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">60</stringProp>
         <stringProp name="ThreadGroup.delay">5</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <com.ubikingenierie.jmeter.plugin.hls.sampler.HLSSampler guiclass="com.ubikingenierie.jmeter.plugin.hls.gui.HLSSamplerGUI" testclass="com.ubikingenierie.jmeter.plugin.hls.sampler.HLSSampler" testname="ULP_PLAYER" enabled="true">
           <stringProp name="ULP_HLSSampler.url">${__P(MANIFEST_URL,http://localhost:8080/hls/live/test.m3u8)}</stringProp>
-          <stringProp name="ULP_HLSSampler.max_waiting_time">${__P(DURATION_WATCHED,20)}</stringProp>
+          <stringProp name="ULP_HLSSampler.max_waiting_time">-1</stringProp>
           <stringProp name="ULP_HLSSampler.max_bandwidth">17179869183</stringProp>
           <stringProp name="ULP_HLSSampler.ip_spoofing_host"></stringProp>
           <stringProp name="ULP_HLSSampler.max_connect_timeout"></stringProp>
           <stringProp name="ULP_HLSSampler.max_read_timeout"></stringProp>
           <stringProp name="ULP_HLSSampler.stream_type">AUTO</stringProp>
+          <boolProp name="ULP_HLSSampler.download_meta_data">false</boolProp>
+          <stringProp name="ULP_HLSSampler.language_audio"></stringProp>
+          <boolProp name="ULP_HLSSampler.download_subtitles">false</boolProp>
+          <stringProp name="ULP_HLSSampler.language_subtitles"></stringProp>
+          <boolProp name="ULP_HLSSampler.play_alternate_video">false</boolProp>
+          <stringProp name="ULP_HLSSampler.alternate_video"></stringProp>
+          <stringProp name="ULP_HLSSampler.video_streaming_sample_result_frequency"></stringProp>
         </com.ubikingenierie.jmeter.plugin.hls.sampler.HLSSampler>
         <hashTree/>
       </hashTree>
@@ -52,7 +60,7 @@
             <dataType>true</dataType>
             <encoding>false</encoding>
             <assertions>false</assertions>
-            <subresults>true</subresults>
+            <subresults>false</subresults>
             <responseData>false</responseData>
             <samplerData>false</samplerData>
             <xml>false</xml>
